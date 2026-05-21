@@ -1078,6 +1078,11 @@ func PreviewStarGiftController(context: AccountContext, option: PreviewGiftSourc
         let invoice = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: source), for: context.window)
 
         actionsDisposable.add(invoice.start(next: { invoice in
+            // Fenixuz Apple §3.1.1 — Star gift subscription via card → block.
+            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                return
+            }
             showModal(with: PaymentsCheckoutController(context: context, source: source, invoice: invoice, completion: { status in
                 switch status {
                 case .paid:
@@ -1091,7 +1096,7 @@ func PreviewStarGiftController(context: AccountContext, option: PreviewGiftSourc
             showModalText(for: context.window, text: strings().paymentsInvoiceNotExists)
         }))
     }
-    
+
     let buyWithStars:(PremiumGiftProduct)->Void = { premiumProduct in
         let state = stateValue.with { $0 }
         
@@ -1159,15 +1164,22 @@ func PreviewStarGiftController(context: AccountContext, option: PreviewGiftSourc
         let purpose: AppStoreTransactionPurpose = .giftCode(peerIds: [peer.id], boostPeer: nil, currency: premiumProduct.priceCurrencyAndAmount.currency, amount: premiumProduct.priceCurrencyAndAmount.amount, text: state.textState.string, entities: state.textState.textInputState().messageTextEntities())
         
                 
+        // Fenixuz: Apple 3.1.1 — StoreKit Premium gift (preview) fork'da bloklanadi.
+        if FenixuzAppStoreIAP.shouldBlockIAP {
+            lockModal.close()
+            needToShow = false
+            FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+            return
+        }
         let _ = (context.engine.payments.canPurchasePremium(purpose: purpose)
         |> deliverOnMainQueue).start(next: { [weak lockModal] available in
             if available {
                 paymentDisposable.set((inAppPurchaseManager.buyProduct(storeProduct, quantity: premiumProduct.giftOption.storeQuantity, purpose: purpose)
                 |> deliverOnMainQueue).start(next: { [weak lockModal] status in
-    
+
                     lockModal?.close()
                     needToShow = false
-                    
+
                     inAppPurchaseManager.finishAllTransactions()
                     PlayConfetti(for: context.window)
                     close?()

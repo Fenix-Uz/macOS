@@ -59,7 +59,6 @@
 		270376412CA59398003EC235 /* NativeMediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270376402CA59398003EC235 /* NativeMediaPlayer.swift */; };
 		27049A532DC9F92E001B2E3E /* MonoforumVerticalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27049A522DC9F926001B2E3E /* MonoforumVerticalView.swift */; };
 		27049A552DC9FC1C001B2E3E /* MonoforumHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27049A542DC9FC17001B2E3E /* MonoforumHorizontalView.swift */; };
-		27049A572DCBA64A001B2E3E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 27049A562DCBA64A001B2E3E /* FirebaseCrashlytics */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2704BAAB28C63DB60018FBC7 /* EmojiStatusStatusRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704BAAA28C63DB60018FBC7 /* EmojiStatusStatusRowItem.swift */; };
 		270595D82B6941C400E05493 /* ChatSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270595D72B6941C400E05493 /* ChatSearchHeader.swift */; };
 		270595E42B6BDCF500E05493 /* menu_boost.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 270595E32B6BDCF500E05493 /* menu_boost.tgs */; };
@@ -269,7 +268,6 @@
 		274BB56D264013AD00620D03 /* cameraon.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 274BB56C264013AC00620D03 /* cameraon.tgs */; };
 		274BB570264013B900620D03 /* cameraoff.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 274BB56F264013B800620D03 /* cameraoff.tgs */; };
 		274DF1DB2DC0BE0400188E7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 274DF1DA2DC0BE0400188E7A /* GoogleService-Info.plist */; };
-		274DF1DE2DC0BF6F00188E7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 274DF1DD2DC0BF6F00188E7A /* FirebaseAnalytics */; settings = {ATTRIBUTES = (Weak, ); }; };
 		274E58602A825A6600EEBDBF /* PeersStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E585F2A825A6600EEBDBF /* PeersStatusView.swift */; };
 		2750B8C22B887E9C0035C37F /* business_chatbot.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 2750B8BD2B887E980035C37F /* business_chatbot.tgs */; };
 		2750B8C32B887E9C0035C37F /* business_hours.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 2750B8BE2B887E990035C37F /* business_hours.tgs */; };
@@ -1668,6 +1666,26 @@
 		D0E82E002500F10E00E09A20 /* MergedAvatarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E82DFF2500F10E00E09A20 /* MergedAvatarsView.swift */; };
 		D0FCA7622434867400B72F18 /* PeerInfoHeadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCA7612434867400B72F18 /* PeerInfoHeadItem.swift */; };
 		D0FFC4AC23E184BA0044D305 /* ChatListFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FFC4AB23E184BA0044D305 /* ChatListFilterController.swift */; };
+		FE10DEC04E14C19000000001 /* FenixuzDemoCodeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000002 /* FenixuzDemoCodeFetcher.swift */; };
+		FE10DEC04E14C19000000010 /* FenixuzBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000011 /* FenixuzBrandColors.swift */; };
+		FE10DEC04E14C19000000020 /* FenixuzL10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000021 /* FenixuzL10n.swift */; };
+		FE10DEC04E14C19000000030 /* FenixuzAppStoreIAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000031 /* FenixuzAppStoreIAP.swift */; };
+		FE10DEC04E14C19000000040 /* FenixuzSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000041 /* FenixuzSettingsController.swift */; };
+		FE10DEC04E14C19000000050 /* FenixuzForeignUserBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000051 /* FenixuzForeignUserBlock.swift */; };
+		FE10DEC04E14C19000000060 /* FenixuzChatPincodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000061 /* FenixuzChatPincodeManager.swift */; };
+		FE10DEC04E14C19000000070 /* FenixuzAIChatbot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000071 /* FenixuzAIChatbot.swift */; };
+		FE10DEC04E14C19000000080 /* FenixuzTextStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000081 /* FenixuzTextStyleController.swift */; };
+		FE10DEC04E14C19000000090 /* FenixuzAutoTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000091 /* FenixuzAutoTextController.swift */; };
+		FE10DEC04E14C190000000A0 /* FenixuzAutoTranslateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000A1 /* FenixuzAutoTranslateController.swift */; };
+		FE10DEC04E14C190000000B0 /* FenixuzTranslationLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000B1 /* FenixuzTranslationLanguageController.swift */; };
+		FE10DEC04E14C190000000C0 /* FenixuzChatPincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000C1 /* FenixuzChatPincodeViewController.swift */; };
+		FE10DEC04E14C190000000D0 /* FenixuzEditedHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000D1 /* FenixuzEditedHistoryManager.swift */; };
+		FE10DEC04E14C190000000E0 /* FenixuzEditedHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000E1 /* FenixuzEditedHistoryController.swift */; };
+		FE10DEC04E14C190000000F0 /* FenixuzForeignUserBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190000000F1 /* FenixuzForeignUserBannerView.swift */; };
+		FE10DEC04E14C19000000100 /* FenixuzSpeechToTextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000101 /* FenixuzSpeechToTextManager.swift */; };
+		FE10DEC04E14C19000000110 /* FenixuzTasksDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000111 /* FenixuzTasksDatabase.swift */; };
+		FE10DEC04E14C19000000120 /* FenixuzTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000121 /* FenixuzTasksController.swift */; };
+		FE10DEC04E14C19000000130 /* FenixuzTasksTabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000131 /* FenixuzTasksTabIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3358,6 +3376,26 @@
 		D0E82DFF2500F10E00E09A20 /* MergedAvatarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergedAvatarsView.swift; sourceTree = "<group>"; };
 		D0FCA7612434867400B72F18 /* PeerInfoHeadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerInfoHeadItem.swift; sourceTree = "<group>"; };
 		D0FFC4AB23E184BA0044D305 /* ChatListFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListFilterController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000002 /* FenixuzDemoCodeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzDemoCodeFetcher.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000011 /* FenixuzBrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzBrandColors.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000021 /* FenixuzL10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzL10n.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000031 /* FenixuzAppStoreIAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzAppStoreIAP.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000041 /* FenixuzSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzSettingsController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000051 /* FenixuzForeignUserBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzForeignUserBlock.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000061 /* FenixuzChatPincodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzChatPincodeManager.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000071 /* FenixuzAIChatbot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzAIChatbot.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000081 /* FenixuzTextStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTextStyleController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000091 /* FenixuzAutoTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzAutoTextController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000A1 /* FenixuzAutoTranslateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzAutoTranslateController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000B1 /* FenixuzTranslationLanguageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTranslationLanguageController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000C1 /* FenixuzChatPincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzChatPincodeViewController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000D1 /* FenixuzEditedHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzEditedHistoryManager.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000E1 /* FenixuzEditedHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzEditedHistoryController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190000000F1 /* FenixuzForeignUserBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzForeignUserBannerView.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000101 /* FenixuzSpeechToTextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzSpeechToTextManager.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000111 /* FenixuzTasksDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksDatabase.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000121 /* FenixuzTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksController.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C19000000131 /* FenixuzTasksTabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksTabIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3525,7 +3563,6 @@
 				2796FEF527423D2100DA653C /* EDSunriseSet in Frameworks */,
 				2796FEFB2742408C00DA653C /* OCR in Frameworks */,
 				27D43DAE27917738006968A6 /* libjpeg.a in Frameworks */,
-				27049A572DCBA64A001B2E3E /* FirebaseCrashlytics in Frameworks */,
 				C2EBBEA11FB5CA94009AD8ED /* CoreServices.framework in Frameworks */,
 				C2A8E14B1F7D2690000FD5E3 /* CoreVideo.framework in Frameworks */,
 				C2A8E1491F7D268B000FD5E3 /* CoreMedia.framework in Frameworks */,
@@ -3537,7 +3574,6 @@
 				27EBC7B227579A7200C6A820 /* Reactions in Frameworks */,
 				C21A48AE1F7CFBBE0095ADB1 /* OpenGL.framework in Frameworks */,
 				C2C9B92C1E80165D00380D79 /* IOKit.framework in Frameworks */,
-				274DF1DE2DC0BF6F00188E7A /* FirebaseAnalytics in Frameworks */,
 				C2FD33F01E697EC2008D13D4 /* QuickLook.framework in Frameworks */,
 				27D696F2274F844D008A723E /* Strings in Frameworks */,
 				2796FF01274242D200DA653C /* GZIP in Frameworks */,
@@ -3836,6 +3872,26 @@
 				2748C56027BA477900F05503 /* Auth_Token.swift */,
 				2748C56227BA53C800F05503 /* Auth_Loading.swift */,
 				2748C56427BA959F00F05503 /* Auth_PhoneNumber.swift */,
+				FE10DEC04E14C19000000002 /* FenixuzDemoCodeFetcher.swift */,
+				FE10DEC04E14C19000000011 /* FenixuzBrandColors.swift */,
+				FE10DEC04E14C19000000021 /* FenixuzL10n.swift */,
+				FE10DEC04E14C19000000031 /* FenixuzAppStoreIAP.swift */,
+				FE10DEC04E14C19000000041 /* FenixuzSettingsController.swift */,
+				FE10DEC04E14C19000000051 /* FenixuzForeignUserBlock.swift */,
+				FE10DEC04E14C19000000061 /* FenixuzChatPincodeManager.swift */,
+				FE10DEC04E14C19000000071 /* FenixuzAIChatbot.swift */,
+				FE10DEC04E14C19000000081 /* FenixuzTextStyleController.swift */,
+				FE10DEC04E14C19000000091 /* FenixuzAutoTextController.swift */,
+				FE10DEC04E14C190000000A1 /* FenixuzAutoTranslateController.swift */,
+				FE10DEC04E14C190000000B1 /* FenixuzTranslationLanguageController.swift */,
+				FE10DEC04E14C190000000C1 /* FenixuzChatPincodeViewController.swift */,
+				FE10DEC04E14C190000000D1 /* FenixuzEditedHistoryManager.swift */,
+				FE10DEC04E14C190000000E1 /* FenixuzEditedHistoryController.swift */,
+				FE10DEC04E14C190000000F1 /* FenixuzForeignUserBannerView.swift */,
+				FE10DEC04E14C19000000101 /* FenixuzSpeechToTextManager.swift */,
+				FE10DEC04E14C19000000111 /* FenixuzTasksDatabase.swift */,
+				FE10DEC04E14C19000000121 /* FenixuzTasksController.swift */,
+				FE10DEC04E14C19000000131 /* FenixuzTasksTabIcon.swift */,
 				27EFF4BA27BAF19600006834 /* Auth_CodeEntry.swift */,
 				27EFF4BC27BBDF4600006834 /* Auth_PasswordEntry.swift */,
 				27EFF4BE27BBF2D600006834 /* Auth_NextView.swift */,
@@ -7076,8 +7132,6 @@
 				27B29E402CABEC55007FDA6B /* TelegramSystem */,
 				27BE52412D9AC72600F40837 /* TdBinding */,
 				2739D49F2DBFC3C50086DAEF /* DetectSpeech */,
-				274DF1DD2DC0BF6F00188E7A /* FirebaseAnalytics */,
-				27049A562DCBA64A001B2E3E /* FirebaseCrashlytics */,
 			);
 			productName = "Telegram-Mac";
 			productReference = D098C7151D7E175A007784E4 /* Telegram.app */;
@@ -7151,7 +7205,6 @@
 			);
 			mainGroup = D098C70C1D7E175A007784E4;
 			packageReferences = (
-				274DF1DC2DC0BF6F00188E7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D098C7161D7E175A007784E4 /* Products */;
 			projectDirPath = "";
@@ -8166,6 +8219,26 @@
 				C2B6A9651E8519FA00A441B7 /* RecentGIFRowItem.swift in Sources */,
 				C2E8BA071FB5EF4C00DEB5E2 /* GalleryThumbsControl.swift in Sources */,
 				2748C56527BA959F00F05503 /* Auth_PhoneNumber.swift in Sources */,
+				FE10DEC04E14C19000000001 /* FenixuzDemoCodeFetcher.swift in Sources */,
+				FE10DEC04E14C19000000010 /* FenixuzBrandColors.swift in Sources */,
+				FE10DEC04E14C19000000020 /* FenixuzL10n.swift in Sources */,
+				FE10DEC04E14C19000000030 /* FenixuzAppStoreIAP.swift in Sources */,
+				FE10DEC04E14C19000000040 /* FenixuzSettingsController.swift in Sources */,
+				FE10DEC04E14C19000000050 /* FenixuzForeignUserBlock.swift in Sources */,
+				FE10DEC04E14C19000000060 /* FenixuzChatPincodeManager.swift in Sources */,
+				FE10DEC04E14C19000000070 /* FenixuzAIChatbot.swift in Sources */,
+				FE10DEC04E14C19000000080 /* FenixuzTextStyleController.swift in Sources */,
+				FE10DEC04E14C19000000090 /* FenixuzAutoTextController.swift in Sources */,
+				FE10DEC04E14C190000000A0 /* FenixuzAutoTranslateController.swift in Sources */,
+				FE10DEC04E14C190000000B0 /* FenixuzTranslationLanguageController.swift in Sources */,
+				FE10DEC04E14C190000000C0 /* FenixuzChatPincodeViewController.swift in Sources */,
+				FE10DEC04E14C190000000D0 /* FenixuzEditedHistoryManager.swift in Sources */,
+				FE10DEC04E14C190000000E0 /* FenixuzEditedHistoryController.swift in Sources */,
+				FE10DEC04E14C190000000F0 /* FenixuzForeignUserBannerView.swift in Sources */,
+				FE10DEC04E14C19000000100 /* FenixuzSpeechToTextManager.swift in Sources */,
+				FE10DEC04E14C19000000110 /* FenixuzTasksDatabase.swift in Sources */,
+				FE10DEC04E14C19000000120 /* FenixuzTasksController.swift in Sources */,
+				FE10DEC04E14C19000000130 /* FenixuzTasksTabIcon.swift in Sources */,
 				2778409F2BAC0B1D0026CC3A /* MultiGiftPremium.swift in Sources */,
 				C2A1054B1E0163D500B01F48 /* GalleryPageController.swift in Sources */,
 				D0D752C822F8A76100E2CB74 /* Geocoding.swift in Sources */,
@@ -8810,7 +8883,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
@@ -8825,7 +8898,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FocusIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FocusIntents;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Telegram. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Fenixuz. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -8837,7 +8910,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.FocusIntents;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app.FocusIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -8870,7 +8943,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -8878,7 +8951,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FocusIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FocusIntents;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Telegram. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Fenixuz. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -8889,7 +8962,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.FocusIntents;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app.FocusIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -8935,7 +9008,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -8963,7 +9036,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245482;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8982,6 +9055,7 @@
 				HEADERMAP_USES_VFS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/libtgvoip";
 				INFOPLIST_FILE = "Telegram-Mac/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Fenixuz;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -8999,17 +9073,16 @@
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 					"$(PROJECT_DIR)/core-xprojects/tde2e/build/tde2e/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 11.14.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-ld_classic",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
@@ -9034,7 +9107,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245682;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c17;
@@ -9056,13 +9129,12 @@
 					"$(PROJECT_DIR)/core-xprojects/libwebp/build/libwebp/lib",
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 11.14.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.TelegramShare;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app.TelegramShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -9086,7 +9158,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 245682;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c17;
@@ -9108,14 +9180,13 @@
 					"$(PROJECT_DIR)/core-xprojects/libwebp/build/libwebp/lib",
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 11.14.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
-				OTHER_LDFLAGS = "$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram.TelegramShare;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app.TelegramShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -9164,7 +9235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -9194,7 +9265,7 @@
 				CURRENT_PROJECT_VERSION = 245482;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 6N38VWS5BX;
+				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9213,6 +9284,7 @@
 				HEADERMAP_USES_VFS = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/submodules/libtgvoip";
 				INFOPLIST_FILE = "Telegram-Mac/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Fenixuz;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -9230,17 +9302,16 @@
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 					"$(PROJECT_DIR)/core-xprojects/tde2e/build/tde2e/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 11.14.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-Wl,-ld_classic",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/macosx/libswiftAppKit.dylib",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.keepcoder.Telegram;
+				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -9295,17 +9366,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		274DF1DC2DC0BF6F00188E7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = exactVersion;
-				version = 10.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		2700B221273ADC94003E4018 /* HotKey */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -9342,11 +9402,6 @@
 		2703762A2CA1FD92003EC235 /* libwebp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = libwebp;
-		};
-		27049A562DCBA64A001B2E3E /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 274DF1DC2DC0BF6F00188E7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 		271891F72B08A7DB0008B238 /* LokiRng */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -9399,11 +9454,6 @@
 		2745FED8274F95CF00546B05 /* ApiCredentials */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ApiCredentials;
-		};
-		274DF1DD2DC0BF6F00188E7A /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 274DF1DC2DC0BF6F00188E7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
 		};
 		2755491C274B7FCB0098A3CD /* TextRecognizing */ = {
 			isa = XCSwiftPackageProductDependency;

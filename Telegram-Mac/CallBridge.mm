@@ -457,9 +457,9 @@ static void withContext(int32_t contextId, void (^f)(OngoingCallThreadLocalConte
     config.enableNS = true;
     config.enableAGC = true;
     
-    config.logFilePath = [[@"~/Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/voip.log" stringByExpandingTildeInPath] UTF8String];
-    
-  //  strncpy(config.logFilePath, [[@"~/Library/Group Containers/6N38VWS5BX.ru.keepcoder.Telegram/voip.log" stringByExpandingTildeInPath] UTF8String], sizeof(config.logFilePath));    //memset(config.logFilePath, 0, sizeof(config.logFilePath));
+    config.logFilePath = [[@"~/Library/Group Containers/ZDBP5RSRZF.uz.fenixuz.app/voip.log" stringByExpandingTildeInPath] UTF8String];
+
+  //  strncpy(config.logFilePath, [[@"~/Library/Group Containers/ZDBP5RSRZF.uz.fenixuz.app/voip.log" stringByExpandingTildeInPath] UTF8String], sizeof(config.logFilePath));    //memset(config.logFilePath, 0, sizeof(config.logFilePath));
     
     _controller.controller->SetConfig(config);
     tgvoip::ServerConfig::GetSharedInstance()->Update(serializedData.UTF8String);

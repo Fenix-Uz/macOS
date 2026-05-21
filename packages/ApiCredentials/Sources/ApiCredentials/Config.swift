@@ -2,20 +2,28 @@ import Cocoa
 
 public final class ApiEnvironment {
     public static var apiId:Int32 {
-        return 9
+        return 35846757
     }
     public static var apiHash:String {
-        return "3975f648bb682ee889f35483bc618d1c"
+        return "67cdc52f3eda13727603d4e779ee2894"
     }
     
     public static var bundleId: String {
-        return "ru.keepcoder.Telegram"
+        return "uz.fenixuz.app"
+    }
+    /// Eski bundle ID — `uz.fenixuz.macapp`'dan `uz.fenixuz.app`'ga (Universal Purchase uchun iOS bilan moslash)
+    /// rename qilingach, eski container (group) ni yangi joyga ko'chiramiz. Yagona safar ishlatiladi.
+    public static var legacyBundleId: String {
+        return "uz.fenixuz.macapp"
+    }
+    public static var legacyGroup: String {
+        return teamId + "." + legacyBundleId
     }
     public static var intentsBundleId: String {
         return teamId + "." + bundleId + ".FocusIntents"
     }
     public static var teamId: String {
-        return "6N38VWS5BX"
+        return "ZDBP5RSRZF"
     }
     
     
@@ -43,6 +51,31 @@ public final class ApiEnvironment {
                     }
                 }
             }
+        }
+        // Fenixuz: bundle ID `uz.fenixuz.macapp` → `uz.fenixuz.app` rename'idan keyin
+        // eski app-group container'idagi ma'lumotlarni (account session, settings) yangi joyga ko'chiramiz.
+        // Bir martagina ishlatiladi: yangi container bo'sh bo'lsa va eski container ma'lumot saqlasa.
+        migrateLegacyBundleContainerIfNeeded()
+    }
+
+    private static func migrateLegacyBundleContainerIfNeeded() {
+        guard let newContainer = containerURL else { return }
+        // Yangi container bo'sh emasligini tekshiramiz — agar to'lgan bo'lsa migratsiya allaqachon bo'lgan
+        let newContents = (try? FileManager.default.contentsOfDirectory(at: newContainer, includingPropertiesForKeys: nil)) ?? []
+        if !newContents.isEmpty {
+            return
+        }
+        let legacyAppGroup = legacyGroup
+        guard let legacyContainerRoot = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: legacyAppGroup) else {
+            return
+        }
+        let legacyContainer = legacyContainerRoot.appendingPathComponent(prefix)
+        guard FileManager.default.fileExists(atPath: legacyContainer.path) else { return }
+        let oldContents = (try? FileManager.default.contentsOfDirectory(atPath: legacyContainer.path)) ?? []
+        for name in oldContents {
+            let src = legacyContainer.appendingPathComponent(name)
+            let dst = newContainer.appendingPathComponent(name)
+            try? FileManager.default.moveItem(at: src, to: dst)
         }
     }
     

@@ -1341,6 +1341,14 @@ func Star_ListScreen(context: AccountContext, currency: CurrencyAmount.Currency 
         let signal = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: invoiceSource), for: window)
 
         _ = signal.start(next: { invoice in
+            // Fenixuz Apple §3.1.1 — Stars are XTR currency (Apple-approved IAP)
+            // so this path normally won't trigger the gate. We still call it
+            // defensively in case a non-Stars subscription invoice ever sneaks
+            // through this screen.
+            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                FenixuzAppStoreIAP.presentBlockedAlert(on: window)
+                return
+            }
             showModal(with: PaymentsCheckoutController(context: context, source: invoiceSource, invoice: invoice, completion: { status in
                 switch status {
                 case .paid:
@@ -1384,6 +1392,15 @@ func Star_ListScreen(context: AccountContext, currency: CurrencyAmount.Currency 
             purpose = .stars(count: option.amount, currency: storeProduct.priceCurrencyAndAmount.currency, amount: storeProduct.priceCurrencyAndAmount.amount)
         }
         
+        // Fenixuz: Apple 3.1.1 — StoreKit Stars top-up fork'da bloklanadi.
+        // Stars (XTR) Apple Review tomonidan tasdiqlanadi, lekin bizning fork
+        // StoreKit transaksiyalarini Telegram serverida nikqachon submit qila olmaydi.
+        if FenixuzAppStoreIAP.shouldBlockIAP {
+            lockModal.close()
+            needToShow = false
+            FenixuzAppStoreIAP.presentBlockedAlert(on: window)
+            return
+        }
         let _ = (context.engine.payments.canPurchasePremium(purpose: purpose)
                  |> deliverOnMainQueue).start(next: { [weak lockModal] available in
             if available {

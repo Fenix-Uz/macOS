@@ -16,3 +16,26 @@ submodules/Mozjpeg/SharedHeaders
 submodules/OpenSSLEncryptionProvider/SharedHeaders
 core-xprojects/dav1d/build
 core-xprojects/tde2e/build
+# claude-agents: per-developer plugin profile (do not commit)
+.claude/settings.local.json
+
+# Backup junk from various editor / refactor operations
+*.bak
+*.bak[0-9]*
+*.bakall
+*.tmp
+.gitmodules.bak
+
+# OS / IDE noise
+.DS_Store
+xcuserdata/
+*.xcuserstate
+
+# DerivedData / build outputs (xcodebuild via /tmp/tgmac-dd is the default)
+DerivedData/
+build/
+.build/
+
+# Swift Package Manager local
+.swiftpm/
+Package.resolved

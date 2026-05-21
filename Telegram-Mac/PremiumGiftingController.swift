@@ -743,8 +743,13 @@ func PremiumGiftingController(context: AccountContext, peerIds: [PeerId]) -> Inp
         let invoice = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: source), for: context.window)
 
         actionsDisposable.add(invoice.start(next: { invoice in
+            // Fenixuz Apple §3.1.1 — gift subscription via card → block.
+            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                return
+            }
             showModal(with: PaymentsCheckoutController(context: context, source: source, invoice: invoice, completion: { status in
-            
+
                 switch status {
                 case .paid:
                     PlayConfetti(for: context.window)
@@ -794,15 +799,22 @@ func PremiumGiftingController(context: AccountContext, peerIds: [PeerId]) -> Inp
         let purpose: AppStoreTransactionPurpose = .giftCode(peerIds: state.peers.map { $0.id }, boostPeer: nil, currency: premiumProduct.priceCurrencyAndAmount.currency, amount: premiumProduct.priceCurrencyAndAmount.amount, text: nil, entities: nil)
         
                 
+        // Fenixuz: Apple 3.1.1 — StoreKit Premium gift code fork'da bloklanadi.
+        if FenixuzAppStoreIAP.shouldBlockIAP {
+            lockModal.close()
+            needToShow = false
+            FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+            return
+        }
         let _ = (context.engine.payments.canPurchasePremium(purpose: purpose)
         |> deliverOnMainQueue).start(next: { [weak lockModal] available in
             if available {
                 paymentDisposable.set((inAppPurchaseManager.buyProduct(storeProduct, quantity: premiumProduct.giftOption.storeQuantity, purpose: purpose)
                 |> deliverOnMainQueue).start(next: { [weak lockModal] status in
-    
+
                     lockModal?.close()
                     needToShow = false
-                    
+
                     inAppPurchaseManager.finishAllTransactions()
                     PlayConfetti(for: context.window)
                     updateState { current in

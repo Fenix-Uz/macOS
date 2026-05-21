@@ -19,12 +19,13 @@ options="$options -DOPENSSL_FOUND=1"
 #options="$options -DOPENSSL_CRYPTO_LIBRARY=${openssl_crypto_library}"
 options="$options -DOPENSSL_INCLUDE_DIR=${OPENSSL_DIR}/include"
 options="$options -DCMAKE_BUILD_TYPE=Release"
+options="$options -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 
 # Step 1: Generate TDLib source files once
 GEN_DIR="$BUILD_DIR/native-gen"
 mkdir -p "$GEN_DIR"
 pushd "$GEN_DIR"
-cmake -DTD_GENERATE_SOURCE_FILES=ON "$SOURCE_DIR"
+cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DTD_GENERATE_SOURCE_FILES=ON "$SOURCE_DIR"
 cmake --build . -- -j$(sysctl -n hw.ncpu)
 popd
 

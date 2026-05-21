@@ -135,6 +135,7 @@ private enum AccountInfoEntry : TableItemListNodeEntry {
     case stories(index: Int, viewType: GeneralViewType)
     case attach(index: Int, AttachMenuBot, viewType: GeneralViewType)
     case general(index: Int, viewType: GeneralViewType)
+    case fenixuz(index: Int, viewType: GeneralViewType)
     case stickers(index: Int, viewType: GeneralViewType)
     case notifications(index: Int, viewType: GeneralViewType, status: UNUserNotifications.AuthorizationStatus)
     case language(index: Int, viewType: GeneralViewType, current: String)
@@ -212,8 +213,10 @@ private enum AccountInfoEntry : TableItemListNodeEntry {
             return .index(24)
         case .about:
             return .index(25)
+        case .fenixuz:
+            return .index(27)
         case let .attach(index, _, _):
-            return .index(26 + index)
+            return .index(28 + index)
         case let .whiteSpace(index, _):
             return .index(1000 + index)
         }
@@ -238,6 +241,8 @@ private enum AccountInfoEntry : TableItemListNodeEntry {
         case let .attach(index, _, _):
             return index
         case let  .general(index, _):
+            return index
+        case let .fenixuz(index, _):
             return index
         case let  .proxy(index, _, _):
             return index
@@ -335,6 +340,11 @@ private enum AccountInfoEntry : TableItemListNodeEntry {
         case let .general(_, viewType):
             return GeneralInteractedRowItem(initialSize, stableId: stableId, name: strings().accountSettingsGeneral, icon: theme.icons.settingsGeneral, activeIcon: theme.icons.settingsGeneralActive, type: .next, viewType: viewType, action: {
                 arguments.presentController(GeneralSettingsViewController(arguments.context), true)
+            }, border:[BorderType.Right], inset:NSEdgeInsets(left: 12, right: 12))
+        case let .fenixuz(_, viewType):
+            // Fenixuz fork: Settings → Fenixuz panel (iOS Settings → Fenixuz porti).
+            return GeneralInteractedRowItem(initialSize, stableId: stableId, name: FenixuzL10n.current.settings_title, icon: theme.icons.settingsGeneral, activeIcon: theme.icons.settingsGeneralActive, type: .next, viewType: viewType, action: {
+                arguments.presentController(FenixuzSettingsController(arguments.context), true)
             }, border:[BorderType.Right], inset:NSEdgeInsets(left: 12, right: 12))
         case let .stories(_, viewType):
             return GeneralInteractedRowItem(initialSize, stableId: stableId, name: strings().accountSettingsMyProfile, icon: theme.icons.settingsStories, activeIcon: theme.icons.settingsStoriesActive, type: .next, viewType: viewType, action: {
@@ -600,6 +610,9 @@ private func accountInfoEntries(peerView:PeerView, context: AccountContext, acco
     
     entries.append(.general(index: index, viewType: .singleItem))
     index += 1
+    // Fenixuz: settings panel — must sit right after General for muscle-memory parity with iOS.
+    entries.append(.fenixuz(index: index, viewType: .singleItem))
+    index += 1
     entries.append(.notifications(index: index, viewType: .singleItem, status: unAuthStatus))
     index += 1
     entries.append(.privacy(index: index, viewType: .singleItem, privacySettings, twoStepConfiguration, webSessions))
@@ -620,10 +633,13 @@ private func accountInfoEntries(peerView:PeerView, context: AccountContext, acco
         index += 1
     }
     
-    if let state = appUpdateState, !context.isSupport {
-        entries.append(.update(index: index, viewType: .singleItem, state: AnyUpdateStateEquatable(any: state)))
-        index += 1
-    }
+    // Sparkle "Update" menu entry hidden in this fork — auto-update is fully
+    // disabled (see AppUpdateViewController.resetUpdater no-op) so the menu
+    // item would just open an empty pane.
+    // if let state = appUpdateState, !context.isSupport {
+    //     entries.append(.update(index: index, viewType: .singleItem, state: AnyUpdateStateEquatable(any: state)))
+    //     index += 1
+    // }
    
 
     entries.append(.whiteSpace(index: index, height: 20))
@@ -1114,6 +1130,10 @@ class AccountViewController : TelegramGenericViewController<AccountControllerVie
                 
             } else if navigation.controller is GeneralSettingsViewController {
                 if let item = tableView.item(stableId: AnyHashable(AccountInfoEntryId.index(6))) {
+                    _ = tableView.select(item: item)
+                }
+            } else if navigation.controller is FenixuzSettingsController {
+                if let item = tableView.item(stableId: AnyHashable(AccountInfoEntryId.index(27))) {
                     _ = tableView.select(item: item)
                 }
             }  else if navigation.controller is RecentSessionsController {

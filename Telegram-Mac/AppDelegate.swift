@@ -31,8 +31,8 @@ import RLottie
 import KeyboardKey
 
 #if BETA || DEBUG
-import Firebase
-import FirebaseCrashlytics
+// import Firebase
+// import FirebaseCrashlytics
 #endif
 
 
@@ -460,11 +460,12 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
         mw = window
         
         
-        #if BETA || DEBUG
-        FirebaseApp.configure()
-        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
-        Crashlytics.crashlytics().sendUnsentReports()
-        #endif
+        // Firebase disabled — iOS frameworks don't work in macOS app bundles.
+        // #if BETA || DEBUG
+        // FirebaseApp.configure()
+        // Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+        // Crashlytics.crashlytics().sendUnsentReports()
+        // #endif
         
         
         

@@ -13,7 +13,10 @@
 #include "common.xcconfig"
 
 DSA_PEM_FILE = dsa_pub.pem
-SFEED_URL = https:$(SIMPLE_SLASH)/mac-updates.telegram.org/beta/versions.xml
+// Sparkle disabled — points at a dead localhost URL so Sparkle tries to
+// fetch, fails the network call, and silently reports "no update". Empty
+// string crashes AppUpdateViewController.swift:570 (force-unwrapped cast).
+SFEED_URL = https:$(SIMPLE_SLASH)/127.0.0.1/none.xml
 SOURCE = DEBUG
 
 TYPE = -D'BETA'

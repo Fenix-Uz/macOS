@@ -1873,6 +1873,12 @@ class WebpageModalController: ModalViewController, WKNavigationDelegate, WKUIDel
                             self?.sendEvent(name: "invoice_closed", data: data)
                         }
                         if let window = self?.window {
+                            // Fenixuz: Apple 3.1.1 — Web App ichidan ochilgan fiat-card Premium obunani bloklaymiz.
+                            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                                FenixuzAppStoreIAP.presentBlockedAlert(on: window)
+                                self?.sendEvent(name: "invoice_closed", data: "{\"slug\": \"\(slug)\", \"status\": \"cancelled\"}")
+                                return
+                            }
                             if invoice.currency == XTR {
                                 showModal(with: Star_PurschaseInApp(context: context, invoice: invoice, source: .slug(slug), completion: completion1), for: window)
                             } else {

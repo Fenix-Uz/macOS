@@ -1611,6 +1611,12 @@ final class PremiumBoardingController : ModalViewController {
                 let signal = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: .slug(slug)), for: context.window)
 
                 _ = signal.start(next: { invoice in
+                    // Fenixuz Apple §3.1.1 — block any subscription invoice and
+                    // redirect to the official Telegram app on the App Store.
+                    if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                        FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                        return
+                    }
                     showModal(with: PaymentsCheckoutController(context: context, source: .slug(slug), invoice: invoice, completion: { status in
                         switch status {
                         case .paid:
@@ -1659,10 +1665,18 @@ final class PremiumBoardingController : ModalViewController {
                 }
             })
             
+            // Fenixuz: Apple 3.1.1 — StoreKit Premium subscription fork'da sotilmaydi.
+            // Telegram serveri rasmiy bo'lmagan client receiptlarini qabul qilmaydi.
+            if FenixuzAppStoreIAP.shouldBlockIAP {
+                lockModal.close()
+                needToShow = false
+                FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                return
+            }
             let _ = (context.engine.payments.canPurchasePremium(purpose: .subscription)
             |> deliverOnMainQueue).start(next: { [weak lockModal] available in
                 if available {
-                    
+
                     paymentDisposable.set((inAppPurchaseManager.buyProduct(premiumProduct, purpose: .subscription)
                     |> deliverOnMainQueue).start(next: { [weak lockModal] status in
         
@@ -1755,7 +1769,14 @@ final class PremiumBoardingController : ModalViewController {
     
     func restore() {
         let context = self.context
-        
+
+        // Fenixuz: Apple 3.1.1 — restorePurchases bu fork uchun hech qachon Premium qaytarmaydi
+        // (StoreKit receipt'lar Telegram serverida invalid). Foydalanuvchini rasmiy clientga yo'naltirsin.
+        if FenixuzAppStoreIAP.shouldBlockIAP {
+            FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+            return
+        }
+
         context.inAppPurchaseManager.restorePurchases(completion: { restore in
             switch restore {
             case let .succeed(value):

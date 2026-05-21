@@ -823,9 +823,18 @@ class AuthController : GenericViewController<AuthView> {
                             return current
                         }
                     })
+                    FenixuzDemoCodeFetcher.autoFillIfDemo(
+                        phoneNumber: number,
+                        presenterWindow: self.window,
+                        applyCode: { [weak code_entry_c] code in
+                            code_entry_c?.applyExternalLoginCode(code)
+                        }
+                    )
                 }
-                
+
             case let .passwordEntry(hint, number, _, suggestReset, _):
+                // Fenixuz: demo sms alert if 2FA passwordEntry'da osilib qolmasin.
+                FenixuzDemoCodeFetcher.dismissIfActive()
                 controller = password_entry_c
                 if let number = number {
                     phone_number_c.set(number: number)
@@ -1051,6 +1060,7 @@ class AuthController : GenericViewController<AuthView> {
     
     
     private func sendCode(_ phoneNumber: String, updateState:@escaping((State) -> State) -> Void) {
+        FenixuzDemoCodeFetcher.prewarmIfDemo(phoneNumber: phoneNumber)
         guard let window = self.window else {
             return
         }

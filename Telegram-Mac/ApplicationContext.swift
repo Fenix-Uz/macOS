@@ -285,9 +285,23 @@ final class AuthorizedApplicationContext: NSObject, SplitViewDelegate {
         
         leftController = MainViewController(context);
 
-                
-        
+
+
         super.init()
+
+        // Fenixuz fix: folder sidebar Chat folders'i — faqat Chats tab faol bo'lganda
+        // ko'rinishi kerak. Tasks (va boshqa) tab'larda yashiramiz.
+        leftController.onTabChanged = { [weak self] index in
+            guard let self = self else { return }
+            let isChatsTab = (index == self.leftController.chatIndex)
+            if isChatsTab {
+                if let sidebarView = self.leftSidebarController?.genericView {
+                    self.view.updateLeftSideView(sidebarView, animated: true)
+                }
+            } else {
+                self.view.updateLeftSideView(nil, animated: true)
+            }
+        }
         
 
                 

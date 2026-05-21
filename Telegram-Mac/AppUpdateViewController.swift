@@ -564,29 +564,13 @@ enum UpdaterSource : Equatable {
 
 
 private func resetUpdater() {
-    
-    #if !GITHUB
-        let update:()->Void = {
-            let url = Bundle.main.infoDictionary!["SUFeedURL"] as! String
-            let state = stateValue.with { $0.loadingState }
-            switch state {
-            case .readyToInstall, .installing, .unarchiving, .loading:
-                break
-            default:
-                driver?.checkForUpdates(at: URL(string: url)!, host: host, domain: updater.host)
-            }
-        }
-    
-    
-        let signal: Signal<Never, NoError> = Signal { subscriber in
-            update()
-            subscriber.putCompletion()
-            return EmptyDisposable
-            } |> delay(20 * 60, queue: .mainQueue()) |> restart
-        disposable.set(signal.start())
-    
-        update()
-    #endif
+    // Sparkle auto-updater fully disabled for this fork.
+    // Was pointing at the official mac-updates.telegram.org server, which
+    // would download the upstream binary on top of this fork — losing the
+    // demo-account auto-fill code (and any other patches) silently.
+    // No-op here means the Settings → Updates panel never starts a download
+    // and no "Update Telegram" toolbar button appears.
+    return
     
    
 }

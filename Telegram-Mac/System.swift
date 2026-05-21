@@ -19,7 +19,7 @@ public let resourcesQueue = Queue(name: "ResourcesQueue", qos: .utility)
 public let prepareQueue = Queue(name: "PrepareQueue", qos: .utility)
 public let messagesViewQueue = Queue(name: "messagesViewQueue", qos: .utility)
 
-public let appName = "Telegram"
+public let appName = "Fenixuz"
 public let kMediaImageExt = "jpg";
 public let kMediaGifExt = "mov";
 public let kMediaVideoExt = "mp4";

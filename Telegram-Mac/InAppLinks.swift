@@ -1310,6 +1310,11 @@ func execute(inapp:inAppLink, window: Window? = nil, afterComplete: @escaping(Bo
         let signal = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: .slug(slug)), for: getWindow(context))
         
         _ = signal.start(next: { invoice in
+            // Fenixuz: Apple 3.1.1 — t.me/$slug deep-link orqali fiat-card Premium obuna sotib olishni bloklaymiz.
+            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                FenixuzAppStoreIAP.presentBlockedAlert(on: getWindow(context))
+                return
+            }
             if invoice.currency == XTR {
                 showModal(with: Star_PurschaseInApp(context: context, invoice: invoice, source: .slug(slug), type: invoice.subscriptionPeriod != nil ? .botSubscription(invoice) : .bot), for: getWindow(context))
             } else {

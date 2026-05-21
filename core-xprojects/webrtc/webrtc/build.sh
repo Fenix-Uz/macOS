@@ -36,6 +36,7 @@ mkdir -p $OUT_DIR || true
 cd $OUT_DIR
 
 cmake -G Ninja \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_OSX_ARCHITECTURES=$CURRENT_ARCH \
     -DTG_OWT_SPECIAL_TARGET=macstore \
     -DCMAKE_BUILD_TYPE=Release \

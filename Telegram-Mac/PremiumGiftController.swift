@@ -509,6 +509,11 @@ final class PremiumGiftController : ModalViewController {
             let signal = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: .slug(slug)), for: context.window)
 
             _ = signal.start(next: { invoice in
+                // Fenixuz Apple §3.1.1 — Premium gift via card → block.
+                if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                    FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                    return
+                }
                 showModal(with: PaymentsCheckoutController(context: context, source: .slug(slug), invoice: invoice, completion: { status in
                     switch status {
                     case .paid:
@@ -603,6 +608,13 @@ final class PremiumGiftController : ModalViewController {
             
             let purpose: AppStoreTransactionPurpose = .gift(peerId: peerId, currency: currency, amount: amount)
             
+            // Fenixuz: Apple 3.1.1 — StoreKit Premium gift fork'da bloklanadi.
+            if FenixuzAppStoreIAP.shouldBlockIAP {
+                lockModal.close()
+                needToShow = false
+                FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                return
+            }
             let _ = (context.engine.payments.canPurchasePremium(purpose: purpose)
             |> deliverOnMainQueue).start(next: { [weak lockModal] available in
                 if available {
@@ -654,6 +666,11 @@ final class PremiumGiftController : ModalViewController {
             let invoice = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: source), for: context.window)
 
             actionsDisposable.add(invoice.start(next: { invoice in
+                // Fenixuz Apple §3.1.1 — Premium gift via card → block.
+                if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                    FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                    return
+                }
                 showModal(with: PaymentsCheckoutController(context: context, source: source, invoice: invoice, completion: { status in
                     switch status {
                     case .paid:
@@ -666,10 +683,10 @@ final class PremiumGiftController : ModalViewController {
             }, error: { error in
                 showModalText(for: context.window, text: strings().paymentsInvoiceNotExists)
             }))
-            
+
         }
 
-        
+
         genericView.accept = {
             
             #if APP_STORE// || DEBUG

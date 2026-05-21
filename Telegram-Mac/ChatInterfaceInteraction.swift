@@ -823,7 +823,10 @@ final class ChatInteraction : InterfaceObserver  {
                             if let receiptMessageId = receiptMessageId {
                                 showModal(with: PaymentsReceiptController(context: strongSelf.context, messageId: receiptMessageId, invoice: invoice), for: strongSelf.context.window)
                             } else {
-                                if invoice.currency == XTR {
+                                // Fenixuz: Apple 3.1.1 — chat-ichi bot keyboard tugmasi orqali @PremiumBot fiat-card obuna yo'lini bloklaymiz.
+                                if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                                    FenixuzAppStoreIAP.presentBlockedAlert(on: strongSelf.context.window)
+                                } else if invoice.currency == XTR {
                                     showModal(with: Star_PurschaseInApp(context: context, invoice: invoice, source: .message(keyboardMessage.id)), for: context.window)
                                 } else {
                                     showModal(with: PaymentsCheckoutController(context: strongSelf.context, source: .message(keyboardMessage.id), invoice: invoice), for: strongSelf.context.window)

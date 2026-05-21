@@ -1259,8 +1259,13 @@ func GiveawayModalController(context: AccountContext, peerId: PeerId, prepaid: P
         let invoice = showModalProgress(signal: context.engine.payments.fetchBotPaymentInvoice(source: source), for: context.window)
 
         actionsDisposable.add(invoice.start(next: { invoice in
+            // Fenixuz Apple §3.1.1 — Giveaway subscription via card → block.
+            if FenixuzAppStoreIAP.shouldBlock(invoice: invoice) {
+                FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+                return
+            }
             showModal(with: PaymentsCheckoutController(context: context, source: source, invoice: invoice, completion: { status in
-            
+
                 switch status {
                 case .paid:
                     PlayConfetti(for: context.window)
@@ -1269,7 +1274,7 @@ func GiveawayModalController(context: AccountContext, peerId: PeerId, prepaid: P
                 default:
                     break
                 }
-                
+
             }), for: context.window)
         }, error: { error in
             showModalText(for: context.window, text: strings().paymentsInvoiceNotExists)
@@ -1334,15 +1339,22 @@ func GiveawayModalController(context: AccountContext, peerId: PeerId, prepaid: P
         }
         
                 
+        // Fenixuz: Apple 3.1.1 — StoreKit Giveaway purchase fork'da bloklanadi.
+        if FenixuzAppStoreIAP.shouldBlockIAP {
+            lockModal.close()
+            needToShow = false
+            FenixuzAppStoreIAP.presentBlockedAlert(on: context.window)
+            return
+        }
         let _ = (context.engine.payments.canPurchasePremium(purpose: purpose)
         |> deliverOnMainQueue).start(next: { [weak lockModal] available in
             if available {
                 paymentDisposable.set((inAppPurchaseManager.buyProduct(premiumProduct, quantity: storeQuantity, purpose: purpose)
                 |> deliverOnMainQueue).start(next: { [weak lockModal] status in
-    
+
                     lockModal?.close()
                     needToShow = false
-                    
+
                     close?()
                     inAppPurchaseManager.finishAllTransactions()
                     delay(0.2, closure: {
