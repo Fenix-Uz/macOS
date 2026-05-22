@@ -1168,7 +1168,6 @@
 		A7C7215923FD473E00CE3F75 /* success_saved.tgs in Resources */ = {isa = PBXBuildFile; fileRef = A7C7215823FD473D00CE3F75 /* success_saved.tgs */; };
 		A7C7215B23FD4BAA00CE3F75 /* LottieLocalAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7215A23FD4BAA00CE3F75 /* LottieLocalAnimations.swift */; };
 		A7D08F48236AC9B6002DC240 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0BCD9E2087BABC001D8D8A /* Sparkle.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A7D08F4A236AC9BB002DC240 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9F0BCD9E2087BABC001D8D8A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7D2822F236C549B0000A9BF /* SyncCoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D2822E236C549B0000A9BF /* SyncCoreExtension.swift */; };
 		A7D28230236C549B0000A9BF /* SyncCoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D2822E236C549B0000A9BF /* SyncCoreExtension.swift */; };
 		A7D28237236C5B2C0000A9BF /* PhoneNumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D28236236C5B2C0000A9BF /* PhoneNumberUtils.swift */; };
@@ -1686,6 +1685,7 @@
 		FE10DEC04E14C19000000110 /* FenixuzTasksDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000111 /* FenixuzTasksDatabase.swift */; };
 		FE10DEC04E14C19000000120 /* FenixuzTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000121 /* FenixuzTasksController.swift */; };
 		FE10DEC04E14C19000000130 /* FenixuzTasksTabIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C19000000131 /* FenixuzTasksTabIcon.swift */; };
+		FE10DEC04E14C190FFFFFFF1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FE10DEC04E14C190FFFFFFF0 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1705,7 +1705,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A7D08F4A236AC9BB002DC240 /* Sparkle.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3396,6 +3395,7 @@
 		FE10DEC04E14C19000000111 /* FenixuzTasksDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksDatabase.swift; sourceTree = "<group>"; };
 		FE10DEC04E14C19000000121 /* FenixuzTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksController.swift; sourceTree = "<group>"; };
 		FE10DEC04E14C19000000131 /* FenixuzTasksTabIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenixuzTasksTabIcon.swift; sourceTree = "<group>"; };
+		FE10DEC04E14C190FFFFFFF0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3876,6 +3876,7 @@
 				FE10DEC04E14C19000000011 /* FenixuzBrandColors.swift */,
 				FE10DEC04E14C19000000021 /* FenixuzL10n.swift */,
 				FE10DEC04E14C19000000031 /* FenixuzAppStoreIAP.swift */,
+				FE10DEC04E14C190FFFFFFF0 /* PrivacyInfo.xcprivacy */,
 				FE10DEC04E14C19000000041 /* FenixuzSettingsController.swift */,
 				FE10DEC04E14C19000000051 /* FenixuzForeignUserBlock.swift */,
 				FE10DEC04E14C19000000061 /* FenixuzChatPincodeManager.swift */,
@@ -7254,6 +7255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE10DEC04E14C190FFFFFFF1 /* PrivacyInfo.xcprivacy in Resources */,
 				272934102778DFFA00F10D3C /* menu_file.tgs in Resources */,
 				27803C0127A3E944007B0FA9 /* menu_folder_student.tgs in Resources */,
 				27C6B65D29DC123500F7E7AC /* share_folder.tgs in Resources */,
@@ -8884,7 +8886,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
-				ENABLE_APP_SANDBOX = NO;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -8944,7 +8946,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
-				ENABLE_APP_SANDBOX = NO;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -9031,12 +9033,14 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "Telegram-Mac/Telegram-Sandbox.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 245482;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9074,7 +9078,7 @@
 					"$(PROJECT_DIR)/core-xprojects/tde2e/build/tde2e/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 11.14.1;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (
@@ -9085,7 +9089,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uz.fenixuz.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "PRODUCTION APP_STORE";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OBJC_BRIDGING_HEADER = "Telegram-Mac/Telegram-Mac-Bridging-Header.h";
@@ -9105,7 +9109,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 245682;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -9130,7 +9134,7 @@
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 11.14.1;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -9153,12 +9157,14 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CODE_SIGN_ENTITLEMENTS = TelegramShare/TelegramShare.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 245682;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c17;
@@ -9181,7 +9187,7 @@
 					"$(PROJECT_DIR)/core-xprojects/dav1d/build/dav1d/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 11.14.1;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -9262,7 +9268,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 245482;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZDBP5RSRZF;
@@ -9303,7 +9309,7 @@
 					"$(PROJECT_DIR)/core-xprojects/tde2e/build/tde2e/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 11.14.1;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = (

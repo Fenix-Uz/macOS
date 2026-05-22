@@ -653,32 +653,36 @@ private func accountInfoEntries(peerView:PeerView, context: AccountContext, acco
         index += 1
     }
     
-    if !context.premiumIsBlocked {
-        entries.append(.premium(index: index, viewType: .singleItem))
-        index += 1
-        
-        
-        let stars_purchase_blocked = context.appConfiguration.getBoolValue("stars_purchase_blocked", orElse: true)
-        
-        if !stars_purchase_blocked, let stars  {
-            entries.append(.stars(index: index, count: stars.balance, viewType: .singleItem))
-            index += 1
-        }
-        
-        if let ton, ton.balance.value > 0 || !ton.transactions.isEmpty  {
-            entries.append(.ton(index: index, count: ton.balance, viewType: .singleItem))
-            index += 1
-        }
-
-        entries.append(.business(index: index, viewType: .singleItem))
-        index += 1
-        
-        entries.append(.giftPremium(index: index, viewType: .singleItem))
-        index += 1
-        
-        entries.append(.whiteSpace(index: index, height: 20))
-        index += 1
-    }
+    // Fenixuz: Premium / Stars / Business / Gift hidden for App Store 3.1.1 compliance.
+    // This fork does not sell these via any payment mechanism — Telegram server only
+    // honors IAP receipts from the official client, so registering StoreKit products
+    // would be theatre. Same posture as iOS Fenixuz. See CLAUDE.md §4 and HOOKS.md.
+    // TON balance is also hidden because the entry sits inside this same block.
+    // if !context.premiumIsBlocked {
+    //     entries.append(.premium(index: index, viewType: .singleItem))
+    //     index += 1
+    //
+    //     let stars_purchase_blocked = context.appConfiguration.getBoolValue("stars_purchase_blocked", orElse: true)
+    //
+    //     if !stars_purchase_blocked, let stars  {
+    //         entries.append(.stars(index: index, count: stars.balance, viewType: .singleItem))
+    //         index += 1
+    //     }
+    //
+    //     if let ton, ton.balance.value > 0 || !ton.transactions.isEmpty  {
+    //         entries.append(.ton(index: index, count: ton.balance, viewType: .singleItem))
+    //         index += 1
+    //     }
+    //
+    //     entries.append(.business(index: index, viewType: .singleItem))
+    //     index += 1
+    //
+    //     entries.append(.giftPremium(index: index, viewType: .singleItem))
+    //     index += 1
+    //
+    //     entries.append(.whiteSpace(index: index, height: 20))
+    //     index += 1
+    // }
    
 
     entries.append(.faq(index: index, viewType: .singleItem))

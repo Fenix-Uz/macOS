@@ -10,19 +10,9 @@ import Cocoa
 import TGUIKit
 
 var APP_VERSION_STRING: String {
-    var vText = "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "1").\(Bundle.main.infoDictionary?["CFBundleVersion"] ?? "0")"
-    
-    
-    #if STABLE
-    vText += " Stable"
-    #elseif APP_STORE
-    vText += " AppStore"
-    #elseif ALPHA
-    vText += " Alpha"
-    #else
-    vText += " Beta"
-    #endif
-    return vText
+    // Fenixuz: build-type suffix (Stable / AppStore / Alpha / Beta) removed so
+    // Settings sidebar and About modal show only the version number.
+    return "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "1").\(Bundle.main.infoDictionary?["CFBundleVersion"] ?? "0")"
 }
 
 fileprivate class AboutModalView : Control {
