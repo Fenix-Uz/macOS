@@ -35,7 +35,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>274253</string>
+	<string>17</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -69,10 +69,6 @@
 	<string>Speech recognition is used to transcribe voice messages into text on this device.</string>
 	<key>SOURCE</key>
 	<string>${SOURCE}</string>
-	<key>SUFeedURL</key>
-	<string>${SFEED_URL}</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>${DSA_PEM_FILE}</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFCompactRounded-Semibold.otf</string>

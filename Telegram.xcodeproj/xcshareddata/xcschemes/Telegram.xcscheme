@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D098C7141D7E175A007784E4"
-               BuildableName = "Telegram.app"
+               BuildableName = "Fenixuz.app"
                BlueprintName = "Telegram"
                ReferencedContainer = "container:Telegram.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D098C7141D7E175A007784E4"
-            BuildableName = "Telegram.app"
+            BuildableName = "Fenixuz.app"
             BlueprintName = "Telegram"
             ReferencedContainer = "container:Telegram.xcodeproj">
          </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D098C7141D7E175A007784E4"
-            BuildableName = "Telegram.app"
+            BuildableName = "Fenixuz.app"
             BlueprintName = "Telegram"
             ReferencedContainer = "container:Telegram.xcodeproj">
          </BuildableReference>
@@ -74,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D098C7141D7E175A007784E4"
-            BuildableName = "Telegram.app"
+            BuildableName = "Fenixuz.app"
             BlueprintName = "Telegram"
             ReferencedContainer = "container:Telegram.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

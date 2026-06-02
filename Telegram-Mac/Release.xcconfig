@@ -7,8 +7,12 @@
 //
 #include "common.xcconfig"
 DSA_PEM_FILE = dsa_pub_prod.pem
-SFEED_URL = https:$(SIMPLE_SLASH)/mac-updates.telegram.org/updates/versions.xml
-SOURCE = STABLE
+// Sparkle disabled (Fenixuz fork) — same posture as Debug.xcconfig.
+// Original upstream URL was https://mac-updates.telegram.org/updates/versions.xml
+// which would download and install the official Telegram client, silently
+// erasing this fork. Mac App Store handles updates, Sparkle not needed.
+SFEED_URL = https:$(SIMPLE_SLASH)/127.0.0.1/none.xml
+SOURCE = APP_STORE
 
-TYPE = -D'STABLE'
+TYPE = -D'APP_STORE'
 OTHER_SWIFT_FLAGS = $(TYPE)

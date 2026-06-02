@@ -46,7 +46,7 @@ private func makeSearchItem(for peer: Peer, index: Int, accountPeer: Peer, accou
     attributeSet.title = peer.displayTitle + " → \(accountPeer.addressName ?? accountPeer.displayTitle)"
     attributeSet.contentDescription = "Popular contact in telegram"
     attributeSet.thumbnailData = theme.icons.appUpdate.data
-    attributeSet.creator = "Telegram"
+    attributeSet.creator = appName
     attributeSet.kind = "Contact"
     
     return .recentPeer(key, index, CSSearchableItem(uniqueIdentifier: key.stringValue, domainIdentifier: Bundle.main.bundleIdentifier!, attributeSet: attributeSet), peer)

@@ -21,11 +21,11 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="TelegramMac" identifier="1Xt-HY-uBw" id="1Xt-HY-uBw" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
+                <menuItem title="Fenixuz" identifier="1Xt-HY-uBw" id="1Xt-HY-uBw" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="TelegramMac" systemMenu="apple" identifier="uQy-DD-JDr" id="uQy-DD-JDr" customClass="MMMenu" customModule="Telegram" customModuleProvider="target">
+                    <menu key="submenu" title="Fenixuz" systemMenu="apple" identifier="uQy-DD-JDr" id="uQy-DD-JDr" customClass="MMMenu" customModule="Telegram" customModuleProvider="target">
                         <items>
-                            <menuItem title="About Telegram" identifier="5kV-Vb-QxS" id="5kV-Vb-QxS" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
+                            <menuItem title="About Fenixuz" identifier="5kV-Vb-QxS" id="5kV-Vb-QxS" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="aboutAction:" target="Voe-Tx-rLC" id="O7X-lz-vtu"/>
@@ -55,7 +55,7 @@
                                     <action selector="closeWindow:" target="Voe-Tx-rLC" id="IKs-t5-kxH"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Hide Telegram" keyEquivalent="h" identifier="Cag-YX-WT6" id="Cag-YX-WT6" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
+                            <menuItem title="Hide Fenixuz" keyEquivalent="h" identifier="Cag-YX-WT6" id="Cag-YX-WT6" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
                                 <connections>
                                     <action selector="hide:" target="-1" id="KWr-rt-JTa"/>
                                 </connections>
@@ -73,7 +73,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit Telegram" keyEquivalent="q" identifier="4sb-4s-VLi" id="4sb-4s-VLi" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
+                            <menuItem title="Quit Fenixuz" keyEquivalent="q" identifier="4sb-4s-VLi" id="4sb-4s-VLi" customClass="MMMenuItem" customModule="Telegram" customModuleProvider="target">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -290,7 +290,7 @@
             </items>
             <point key="canvasLocation" x="139" y="121"/>
         </menu>
-        <window title="Telegram" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="QvC-M9-y7g" customClass="AppWindow" customModule="TGUIKit">
+        <window title="Fenixuz" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="QvC-M9-y7g" customClass="AppWindow" customModule="TGUIKit">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>

@@ -10,7 +10,10 @@
 
 DSA_PEM_FILE = dsa_pub.pem
 APPCENTER_SECRET = 4ff72ee6-40ca-438b-a068-7ba14a53e288
-SFEED_URL = https:$(SIMPLE_SLASH)/mac-updates.telegram.org/beta/versions.xml
+// Sparkle disabled (Fenixuz fork) — same posture as Debug.xcconfig and Release.xcconfig.
+// Original upstream URL was https://mac-updates.telegram.org/beta/versions.xml
+// which would silently overwrite this fork on every launch.
+SFEED_URL = https:$(SIMPLE_SLASH)/127.0.0.1/none.xml
 SOURCE = BETA
 
 TYPE = -D'BETA'

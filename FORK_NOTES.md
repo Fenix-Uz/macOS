@@ -163,6 +163,80 @@ private func resetUpdater() {
 
 Birinchi ikkita asosiy — settings menyusini olib tashlash ham UI-darajada ortiqcha. Birinchi qadamlar bilan ham app crash bo'lmasdan ishlaydi, lekin Settings → Updates panel'ni ochsa, bo'sh pane ko'rinardi.
 
+### 3.9 App Store 3.1.1 IAP gate — Settings'da Premium / Stars / Business / Gift yashirilgan
+
+iOS Fenixuz da Apple 2026-05-18 da `Telegram-iOS` build 15 ni 3.1.1 (digital subscriptions IAP'siz) sababli rad etgan. Bizning fork **Telegram Premium / Stars / Business / Premium Gift** ni hech qanday yo'l bilan (na IAP, na fiat) sotmaydi — chunki Telegram serveri faqat rasmiy klient IAP receipt'larini qabul qiladi va uz.fenixuz.app uchun StoreKit register qilish teatr bo'lar edi. Mac fork ham xuddi shu siyosatga rioya qilishi kerak.
+
+**Patched fayl:** `Telegram-Mac/AccountViewController.swift` (line ~656-681)
+
+`accountInfoEntries(...)` ichidagi `if !context.premiumIsBlocked { ... }` bloki **butunlay kommentariyaga olingan**:
+- `.premium` entry
+- `.stars` entry (XTR balance + purchase)
+- `.ton` entry (TON wallet)
+- `.business` entry
+- `.giftPremium` entry
+- `.whiteSpace` separator
+
+```swift
+// Fenixuz: Premium / Stars / Business / Gift hidden for App Store 3.1.1 compliance.
+// This fork does not sell these via any payment mechanism — Telegram server only
+// honors IAP receipts from the official client, so registering StoreKit products
+// would be theatre. Same posture as iOS Fenixuz. See CLAUDE.md §4 and HOOKS.md.
+// TON balance is also hidden because the entry sits inside this same block.
+// if !context.premiumIsBlocked { ... }
+```
+
+**Eslatma — bu UI darajada gate.** Agar foydalanuvchi deep-link orqali (`t.me/...?startgroup=` invoice URL) yoki bot checkout orqali Premium oynaga kirsa, hozircha bloklanmaydi. iOS dagi `submodules/Fenixuz/AppStoreIAP/` ekvivalent moduli Mac uchun keyinroq qilinishi kerak (Bot Checkout / Web App invoice / Premium boarding hook nuqtalari aniqlanishi).
+
+### 3.10 Version string'dan "Beta" suffix olib tashlash
+
+**Patched fayl:** `Telegram-Mac/AboutModalController.swift` (line 12-26)
+
+Original `APP_VERSION_STRING` da preprocessor flag'lariga qarab " Beta" / " AppStore" / " Alpha" / " Stable" suffix qo'shilardi. Fenixuz fork'ida bu suffix Settings sidebar pastida foydalanuvchiga "1.0.0.10 Beta" ko'rinishida ko'rinib, marketing screenshot'larda chiroyli emas.
+
+**O'zgartirilgan:**
+```swift
+var APP_VERSION_STRING: String {
+    // Fenixuz: build-type suffix (Stable / AppStore / Alpha / Beta) removed so
+    // Settings sidebar and About modal show only the version number.
+    return "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "1").\(Bundle.main.infoDictionary?["CFBundleVersion"] ?? "0")"
+}
+```
+
+Endi Settings sidebar pastida shunchaki `1.0.0.10` (yoki `1.0.0.11` keyingi build'da) ko'rinadi.
+
+**Affected display joylari** (`APP_VERSION_STRING` chaqiruvchilari):
+- `AccountViewController.swift:424` — Settings sidebar pastidagi version label
+- `AboutModalController.swift:42, 62, 119` — About modal oynasidagi version label + clipboard'ga copy qilish
+
+### 3.11 App Store 4.1(a) Copycats + 4.2.2 — app nomini "Telegram" → "Fenixuz" (2026-06-02)
+
+Apple Submission `a0ff9208-00df-4016-9721-4cd5fd7619ce` (review 2026-06-01, build `1.0.0 (14)`) ikki sabab bilan rad etdi: **4.1(a) Copycats** ("the app's name includes references to Telegram") va **4.2.2 Minimum Functionality**.
+
+**Muhim:** `CFBundleName`/`CFBundleDisplayName` allaqachon "Fenixuz" edi (878bbb429 da). Demak reviewer "Telegram" ni boshqa joyda ko'rdi: **menu bar** (About/Hide/Quit Telegram), **window title**, va **.app fayl nomi / process nomi** (`PRODUCT_NAME = $(TARGET_NAME)` = "Telegram").
+
+**Qilingan o'zgarishlar (faqat user-visible nom; module nomi tegilmadi):**
+
+1. **`Telegram-Mac/*.lproj/MainMenu.xib`** (7 ta: Base, en, de, es, it, nl, pt-BR) — faqat `title="..."` atributlari: `TelegramMac`/`About Telegram`/`Hide Telegram`/`Quit Telegram`/`Telegram` (Window item)/`<window title="Telegram">` → **Fenixuz**.
+   - ⚠️ `customModule="Telegram"` (Swift **module** nomi, 358 ta) **TEGILMADI**. Agar o'zgartirilsa nib `Telegram.AppDelegate`/`MMMenuItem` klasslarini topa olmaydi → launch'da crash.
+2. **`Telegram-Mac/*.lproj/MainMenu.strings`** (7 ta: de, es, it, nl, pt-BR, ru, uk) — localized menu qiymatlari "Telegram" → "Fenixuz".
+   - ⚠️ **de/es/it = UTF-16LE (BOM bilan)**. BSD `sed` ularda "illegal byte sequence" beradi va faylni o'zgartirmaydi. `python3` bilan encoding saqlab o'zgartirildi (BOM-aware decode/encode). nl/pt-BR/ru/uk = UTF-8.
+3. **`Telegram-Mac/Spotlight.swift:49`** — `attributeSet.creator = "Telegram"` → `appName`.
+4. **`Telegram.xcodeproj/project.pbxproj`** — main **Telegram** target (Debug + Release):
+   ```
+   PRODUCT_NAME = Fenixuz;          // edi: "$(TARGET_NAME)" = Telegram
+   PRODUCT_MODULE_NAME = Telegram;  // PIN — module nomi o'zgarmasligi shart
+   ```
+   Endi `.app` = **Fenixuz.app**, process = **Fenixuz**, lekin Swift module hali **Telegram** (nib `customModule` + share ext `$(PRODUCT_MODULE_NAME).ShareViewController` ishlashi uchun). **TelegramShare** va **FocusIntents** target'lari tegilmadi (`$(TARGET_NAME)`) — extension'lar fayl nomi bilan emas, bundle ID bilan ishlaydi; display name allaqachon "Fenixuz".
+
+**Tegilmagan (ataylab):** `ParseAppearanceColors.swift:358` default `copyright = "Telegram"` (theme palette default, reviewer ko'rmaydi); `tg`/`telegram` URL scheme'lari (deep link uchun kerak); in-feature copy ("Telegram Premium" h.k. — service nomi, app nomi emas).
+
+**Icon:** `Assets.xcassets/AppIcon.appiconset/Logo_*.png` allaqachon **qizil phoenix** (Fenixuz brendi), Telegram logosi EMAS — 4.1 uchun xavfsiz.
+
+**4.2.2:** kod o'zgarmadi. Bu to'liq native AppKit app (web wrapper emas). Reply message + demo login (reviewer ichkariga kirib native funksiyani ko'rishi uchun) bilan hal qilinadi. Reply matni: `APPLE_REVIEW_REPLY.md`.
+
+**Eslatma — ASC metadata:** binary tuzatildi, lekin App Store Connect listing'da (subtitle, keywords, promotional text, description, screenshots) "Telegram" bo'lmasligini foydalanuvchi tekshirishi kerak (Apple metadata'ni ham tekshiradi).
+
 ---
 
 ## 4. Demo account auto-fill (asosiy maqsad)
@@ -265,9 +339,39 @@ xcodebuild -workspace Telegram-Mac.xcworkspace \
 
 ## 6. Apple ID va codesign
 
-- **Team:** Vipads
-- **Bundle ID:** `ru.keepcoder.Telegram` (hozir o'zgartirilmagan — Mac App Store deploy paytida o'zgartiriladi)
-- **Sign Style:** Automatic, Personal Team yetadi (testing uchun)
+- **Team:** **Vipads MCHJ** (organization), Apple Team ID `ZDBP5RSRZF`, Apple ID `vipadsllc@gmail.com`. **NOT a personal team.** Same team as iOS Fenixuz (`uz.fenixuz.app`) — required for Universal Purchase.
+- **Bundle ID:** `uz.fenixuz.app` (renamed 2026-05-21 from `uz.fenixuz.macapp` to match iOS for Universal Purchase). Share extension: `uz.fenixuz.app.TelegramShare`. FocusIntents: `uz.fenixuz.app.FocusIntents`.
+- **Sign Style:** Automatic. Development certs may display the individual developer's name (e.g. "Apple Development: Azimjon Abdurasulov") because Apple labels Dev certs by Apple ID owner — but the **Team ID** under which they're issued is always `ZDBP5RSRZF`. Distribution certs for Mac App Store must be `Apple Distribution: Vipads MCHJ`.
+
+### 6.1 Archive signing keys — DO NOT leave empty (2026-05-22 fix)
+
+Xcode Organizer → Distribute App "No Team Found in Archive" rejection happens when `CODE_SIGN_IDENTITY` is an empty string in the Release configuration. With `CODE_SIGN_STYLE = Automatic` AND `CODE_SIGN_IDENTITY = ""`, Xcode at archive time has nothing to lock signing to and falls back to **ad-hoc** signing (`codesign -dvvv` shows `Signature=adhoc`, `TeamIdentifier=not set`). The archive's `Info.plist` `ApplicationProperties.Team` and `SigningIdentity` then come out empty strings, and Organizer refuses to proceed with "No Team Found in Archive".
+
+The fix is to mirror what the Debug config has — keep `CODE_SIGN_IDENTITY = "Apple Development"` (plus the `[sdk=macosx*]` variant) in BOTH the **Telegram** main target's Release config AND the **TelegramShare** Release config inside `Telegram.xcodeproj/project.pbxproj`:
+
+```
+CODE_SIGN_IDENTITY = "Apple Development";
+"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+CODE_SIGN_STYLE = Automatic;
+DEVELOPMENT_TEAM = ZDBP5RSRZF;
+```
+
+Distribution cert assignment for Mac App Store is handled at Xcode → Organizer → Distribute App step (not at archive time) — the archive only needs valid Development signing + Team for Organizer to proceed.
+
+**Regression-check (run after every pbxproj rewrite):**
+
+```bash
+grep -n 'CODE_SIGN_IDENTITY = "";' Telegram.xcodeproj/project.pbxproj
+# must return: (no output). If it returns lines, the archive will be adhoc-signed.
+
+xcodebuild -showBuildSettings -workspace Telegram-Mac.xcworkspace \
+    -scheme Telegram -configuration Release 2>/dev/null \
+  | grep -E "CODE_SIGN_IDENTITY|DEVELOPMENT_TEAM|_DEVELOPMENT_TEAM_IS_EMPTY"
+# must show:
+#   CODE_SIGN_IDENTITY = Apple Development
+#   DEVELOPMENT_TEAM = ZDBP5RSRZF
+#   _DEVELOPMENT_TEAM_IS_EMPTY = NO
+```
 
 ---
 

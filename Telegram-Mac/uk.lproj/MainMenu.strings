@@ -1,6 +1,6 @@
 
-/* Class = "NSMenuItem"; title = "TelegramMac"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "TelegramMac";
+/* Class = "NSMenuItem"; title = "Fenixuz"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
 "2oI-Rn-ZJC.title" = "Transformations";
@@ -11,14 +11,14 @@
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Enter Full Screen";
 
-/* Class = "NSMenuItem"; title = "Quit Telegram"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit Telegram";
+/* Class = "NSMenuItem"; title = "Quit Fenixuz"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
 
-/* Class = "NSMenuItem"; title = "About Telegram"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About Telegram";
+/* Class = "NSMenuItem"; title = "About Fenixuz"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
 "6dh-zS-Vam.title" = "Redo";
@@ -38,8 +38,8 @@
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Preferences…";
 
-/* Class = "NSMenuItem"; title = "Hide Telegram"; ObjectID = "Cag-YX-WT6"; */
-"Cag-YX-WT6.title" = "Hide Telegram";
+/* Class = "NSMenuItem"; title = "Hide Fenixuz"; ObjectID = "Cag-YX-WT6"; */
+"Cag-YX-WT6.title" = "Hide Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "Dv1-io-Yv7"; */
 "Dv1-io-Yv7.title" = "Spelling and Grammar";
@@ -71,8 +71,8 @@
 /* Class = "NSMenuItem"; title = "Hide"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Hide";
 
-/* Class = "NSWindow"; title = "Telegram"; ObjectID = "QvC-M9-y7g"; */
-"QvC-M9-y7g.title" = "Telegram";
+/* Class = "NSWindow"; title = "Fenixuz"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoom";
@@ -137,8 +137,8 @@
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
 "tRr-pd-1PS.title" = "Data Detectors";
 
-/* Class = "NSMenu"; title = "TelegramMac"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "TelegramMac";
+/* Class = "NSMenu"; title = "Fenixuz"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "Cut";
@@ -152,8 +152,8 @@
 /* Class = "NSMenuItem"; title = "Check for Updates"; ObjectID = "xey-M7-XVy"; */
 "xey-M7-XVy.title" = "Check for Updates";
 
-/* Class = "NSMenuItem"; title = "Telegram"; ObjectID = "yUb-j6-EX5"; */
-"yUb-j6-EX5.title" = "Telegram";
+/* Class = "NSMenuItem"; title = "Fenixuz"; ObjectID = "yUb-j6-EX5"; */
+"yUb-j6-EX5.title" = "Fenixuz";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "Show Substitutions";
