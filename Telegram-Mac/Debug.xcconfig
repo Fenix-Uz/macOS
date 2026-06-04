@@ -21,3 +21,9 @@ SOURCE = DEBUG
 
 TYPE = -D'BETA'
 OTHER_SWIFT_FLAGS = $(TYPE)
+
+// Xcode 16 "Debug Dylib" (splits the app into a thin exec + Fenixuz.debug.dylib) fails to load
+// here — "library load denied by system policy" — because the debug dylib's signature doesn't
+// satisfy this fork's hardened-runtime / library-validation signing, so dyld aborts (SIGABRT)
+// on launch. Disabling it builds the app as a single binary (normal debugging still works).
+ENABLE_DEBUG_DYLIB = NO
