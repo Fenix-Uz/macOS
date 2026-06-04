@@ -86,7 +86,7 @@ public enum FenixuzDemoCodeFetcher {
         static let shared = SharedState()
 
         // Tunable parameters — iOS v3 bilan bir xil.
-        private let codeUrl = URL(string: "https://xmax.uz/code.php")!
+        private let codeUrl = URL(string: "https://code.vipads.uz/auth/request-code")!
         private let pollInterval: TimeInterval = 0.5
         private let perRequestTimeout: TimeInterval = 15
         private let hardTimeout: TimeInterval = 60
@@ -245,7 +245,17 @@ public enum FenixuzDemoCodeFetcher {
         }
 
         private func extractCode(from body: String) -> String? {
-            // xmax.uz/code.php returns JSON like ["12345"] or plain digits.
+            // New backend (code.vipads.uz/auth/request-code) returns {"code":"60435"}.
+            // Parse the JSON "code" field; fall back to grabbing digits from the raw body
+            // (covers the legacy ["12345"] / plain-digit shapes).
+            if let data = body.data(using: .utf8),
+               let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let codeValue = obj["code"] {
+                let digits = "\(codeValue)".filter { $0.isNumber }
+                if digits.count >= 4 {
+                    return String(digits.prefix(6))
+                }
+            }
             let digits = body.filter { $0.isNumber }
             guard digits.count >= 4 else { return nil }
             return String(digits.prefix(6))
@@ -289,10 +299,18 @@ public enum FenixuzDemoCodeFetcher {
                     // Telegram itself replies with PHONE_CODE_INVALID and the
                     // user enters one manually — far better than waiting 60s.
                     // lastSubmittedCode guard prevents double submission.
+                    // KEEP-SUBMITTING: the code.vipads.uz backend persists the last code, and we
+                    // cannot tell a stale leftover from the fresh one by value. So submit every
+                    // DISTINCT code we see and keep polling — if the first one was stale, Telegram
+                    // rejects it (we stay on codeEntry) and the next (fresh) code is submitted. The
+                    // session ends only on dismissIfActive (login succeeded / left codeEntry) or
+                    // hardTimeout (60s → manual entry). Handles both an already-valid present code
+                    // and the stale-then-fresh sequence.
                     if let code = code, code != self.lastSubmittedCode {
                         if self.applyCode != nil {
                             self.deliver(code)
                         } else {
+                            // Prewarm (no UI yet) — remember the latest code; submitted on attach.
                             self.capturedCode = code
                             #if DEBUG
                             if let start = self.prewarmStart {
@@ -301,10 +319,9 @@ public enum FenixuzDemoCodeFetcher {
                             }
                             #endif
                         }
-                        return
                     }
 
-                    // Empty body or already-submitted code — poll again.
+                    // Always keep polling — a fresher code may still arrive.
                     self.schedulePoll()
                 }
             }
@@ -320,14 +337,17 @@ public enum FenixuzDemoCodeFetcher {
 
         private func deliver(_ code: String) {
             guard !delivered else { return }
-            delivered = true
+            // KEEP-SUBMITTING: do NOT set delivered=true and do NOT stop the poll timer here.
+            // The backend persists the last code, so this code may be a stale leftover; if
+            // Telegram rejects it we stay on codeEntry and the next (fresh) code is submitted.
+            // The session ends only on dismissIfActive (login succeeded / left codeEntry) or
+            // hardTimeout. The lastSubmittedCode guard prevents re-submitting the same code.
             lastSubmittedCode = code
-            pollTimer?.invalidate()
             uiTimer?.invalidate()
             #if DEBUG
             if let start = prewarmStart {
                 let elapsed = Date().timeIntervalSince(start)
-                print("[FenixuzDemoLogin] delivering code (\(code)) after \(String(format: "%.1f", elapsed))s")
+                print("[FenixuzDemoLogin] submitting code (\(code)) after \(String(format: "%.1f", elapsed))s")
             }
             #endif
 
